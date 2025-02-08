@@ -1,0 +1,424 @@
+1.JAVA
+A.
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Integer[] numbers={1,2,3,4,5,6,7};
+        ArrayList<Integer>list=new ArrayList<>(Arrays.asList(numbers));
+        Collections.shuffle(list);
+        list.toArray(numbers);
+        System.out.println(Arrays.toString(numbers));
+    }
+}
+input:{1,2,3,4,5,6,7}
+output=[5, 6, 2, 3, 1, 4, 7]
+
+B.
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        String s=input.nextLine().toUpperCase();
+        HashMap<Character,Integer>hmap=new HashMap<>();
+        hmap.put('I',1);
+        hmap.put('V',5);
+        hmap.put('X',10);
+        hmap.put('L',50);
+        hmap.put('C',100);
+        hmap.put('D',500);
+        hmap.put('M',1000);
+        int result=0;
+        for(int i=0;i<s.length()-1;i++){
+            if(i+1<s.length()&&hmap.get(s.charAt(i))<hmap.get(s.charAt(i+1))){
+                result+=hmap.get(s.charAt(i+1))-hmap.get(s.charAt(i));
+                i++;
+            }else{
+                result+=hmap.get(s.charAt(i));
+            }
+        }
+        System.out.println(result);
+    }
+}
+input=ix;
+output=9;
+
+C.
+import java.util.*;
+class Main{
+    public static void allLetters(String str){
+        str=str.toLowerCase();
+        boolean presentOrNot=true;
+        for(char ch='a';ch<='z';ch++){
+            if(!str.contains(String.valueOf(ch))){
+                presentOrNot=false;
+                break;
+            }
+        }
+        if(presentOrNot){
+            System.out.println("Panagram");
+        }else{
+            System.out.println("Not a Panagram");
+        }
+    }
+    public static void main(String[] args){
+        Scanner input=new Scanner(System.in);
+        String str=input.nextLine();
+        allLetters(str);
+    }
+}
+input="The quick brown fox jumps over the lazy dog";
+output=Panagram
+
+2.JAVASCRIPT
+A.
+let s = "This is a sunny day";
+let splitting = s.split(" ");
+let res = "";
+for (let i of splitting) {
+    res += i.split("").reverse().join("") + " ";
+}
+console.log(res);
+
+B.
+function selectionSortDescending(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        let maxIndex = i;
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] > arr[maxIndex]) {
+                maxIndex = j;
+            }
+        }
+        [arr[i], arr[maxIndex]] = [arr[maxIndex], arr[i]];
+    }
+    return arr;
+}
+
+// Example usage
+const numbers = [5, 2, 9, 1, 7, 6];
+console.log(selectionSortDescending(numbers)); // Output: [9, 7, 6, 5, 2, 1]
+
+3.HTML
+A.
+html code:
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="calculator">
+        <h1 class="Heading">Calculater App</h1>
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="clearDisplay()">C</button>
+
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('/')">/</button>
+
+
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('*')">*</button>
+
+
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button onclick="appendValue('-')">-</button>
+            <button onclick="appendValue('+')">+</button>
+            <button onclick="calculateResult()">=</button>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+css code:
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.Heading {
+    color: white;
+    font-weight: bold;
+}
+
+.calculator {
+    width: 250px;
+    background-color: green;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#display {
+    width: 100%;
+    height: 50px;
+    font-size: 1.5em;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    background-color: blue;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    background-color: red;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #ccc;
+}
+
+button:active {
+    background: #bbb;
+}
+
+javascript code:
+
+function appendValue(value) {
+    display.value += value;
+}
+
+function clearDisplay() {
+    display.value = "";
+}
+
+function calculateResult() {
+    if (display.value) {
+        display.value = eval(display.value);
+    }
+}
+
+B.
+
+html code:
+
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <div class="container">
+        <h2>Survey Form</h2>
+        <form id="surveyForm">
+            <label>First Name:</label>
+            <input type="text" id="firstName" required>
+
+            <label>Last Name:</label>
+            <input type="text" id="lastName" required>
+
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label>Country:</label>
+            <select id="country" required>
+                <option value="">Select Country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <option value="India">India</option>
+            </select>
+
+            <label>Gender:</label>
+            <div class="gender-box">
+                <label><input type="checkbox" name="gender" value="Male"> Male</label>
+                <label><input type="checkbox" name="gender" value="Female"> Female</label>
+                <label><input type="checkbox" name="gender" value="Other"> Other</label>
+            </div>
+
+            <label>Profession:</label>
+            <input type="text" id="profession" required>
+
+            <label>Email:</label>
+            <input type="email" id="email" required>
+
+            <label>Mobile Number:</label>
+            <input type="text" id="mobile" required>
+
+            <div class="buttons">
+                <button type="button" class="submit-btn" onclick="validateForm()">Submit</button>
+                <button type="reset" class="reset-btn">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Popup Box -->
+    <div id="popup" class="popup">
+        <h3>Survey Details</h3>
+        <p id="popupContent"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+  </body>
+</html>
+
+css code:
+
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        .container h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .gender-box {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .reset-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        .popup button {
+            margin-top: 15px;
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+javascript code:
+
+function validateForm() {
+            let firstName = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let dob = document.getElementById("dob").value;
+            let country = document.getElementById("country").value;
+            let profession = document.getElementById("profession").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+
+            // Get selected gender values
+            let genderElements = document.getElementsByName("gender");
+            let gender = [];
+            for (let i = 0; i < genderElements.length; i++) {
+                if (genderElements[i].checked) {
+                    gender.push(genderElements[i].value);
+                }
+            }
+
+            // Validate empty fields
+            if (!firstName || !lastName || !dob || !country || !profession || !email || !mobile || gender.length === 0) {
+                alert("All fields are required!");
+                return;
+            }
+
+            // Validate email format
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Enter a valid email address!");
+                return;
+            }
+
+            // Validate mobile number (Only digits, 10-15 characters)
+            let mobilePattern = /^[0-9]{10,15}$/;
+            if (!mobilePattern.test(mobile)) {
+                alert("Enter a valid mobile number (10-15 digits)!");
+                return;
+            }
+
+            // Display popup with values
+            document.getElementById("popupContent").innerHTML = `
+                <strong>First Name:</strong> ${firstName}<br>
+                <strong>Last Name:</strong> ${lastName}<br>
+                <strong>Date of Birth:</strong> ${dob}<br>
+                <strong>Country:</strong> ${country}<br>
+                <strong>Gender:</strong> ${gender.join(", ")}<br>
+                <strong>Profession:</strong> ${profession}<br>
+                <strong>Email:</strong> ${email}<br>
+                <strong>Mobile:</strong> ${mobile}
+            `;
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("surveyForm").reset(); // Reset form after closing popup
+        }
+
